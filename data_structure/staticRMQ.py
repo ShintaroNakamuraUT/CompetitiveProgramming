@@ -1,10 +1,9 @@
 # staticRMQ = "static range minimum query'
 
 class RMQ:
-    def __init__(self, arr, INF=1 << 63):
+    def __init__(self, arr):
         self.n = n = len(arr)
         self.double = d = [list(arr)]
-        self.INF = INF
         ii = 1
         while ii < n:
             row = d[-1].copy()
@@ -19,7 +18,7 @@ class RMQ:
         i = 0
         j = l
         d = self.double
-        result = self.INF
+        result = float('inf')
         while k:
             if k & 1:
                 result = min(result, d[i][j])
@@ -29,10 +28,10 @@ class RMQ:
         return result
 
 
-# n, q = map(int, input().split())
-# l = list(map(int, input().split()))
-# dbl = RMQ(l)
-# for _ in range(q):
-#     l,r = map(int, input().split())
-#     print(dbl.get(l,r))
+n, q = map(int, input().split())
+l = list(map(int, input().split()))
+dbl = RMQ(l)
+for _ in range(q):
+    l,r = map(int, input().split())
+    print(dbl.get(l,r))
 
